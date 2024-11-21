@@ -133,3 +133,21 @@ h2 {
 span.highlight {
   background-color: #ffffd0;
 }
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+h3 {
+  margin-bottom: -8px;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
