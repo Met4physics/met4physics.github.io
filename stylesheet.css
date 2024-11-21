@@ -138,6 +138,7 @@ span.highlight {
 .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 h3 {
