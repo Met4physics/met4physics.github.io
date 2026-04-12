@@ -173,6 +173,7 @@ h3 {
   display: flex;
   gap: 16px;
   align-items: flex-start;
+  position: relative;
   padding: 14px;
   border: 1px solid #e6e9ef;
   border-radius: 12px;
@@ -194,12 +195,35 @@ h3 {
 .project-content {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 22px;
 }
 
 .project-desc,
+.project-role,
 .project-links,
 .project-meta {
   margin: 0 0 8px 0;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #7c3aed;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.project-role {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  margin: 0;
+  text-align: right;
 }
 
 .project-meta {
