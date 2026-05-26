@@ -109,6 +109,27 @@ h2 {
   font-weight: 700;
 }
 
+.paper-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+  padding: 3px 9px;
+  border: 1px solid #f5c056;
+  border-radius: 999px;
+  background: #fff7df;
+  color: #9a5b00;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.paper-badge:focus,
+.paper-badge:hover {
+  background: #ffedb5;
+  color: #7c4600;
+}
+
 .name {
   padding-top: 20px;
   margin: 0;
