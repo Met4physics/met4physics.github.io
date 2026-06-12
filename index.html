@@ -116,8 +116,8 @@
                         </p>
                         <p class="project-meta">
                           <a href="https://huggingface.co/Wuli-art" target="_blank" rel="noopener noreferrer">
-                            <img alt="Hugging Face Total Downloads"
-                              src="https://img.shields.io/badge/Total%20Downloads-200%2C563-ff9f43?logo=huggingface">
+                            <img id="wuli-downloads-badge" alt="Hugging Face Total Downloads"
+                              src="https://img.shields.io/badge/Total%20Downloads-loading-ff9f43?logo=huggingface">
                           </a>
                           &nbsp;
                           <a href="https://www.comfy.org/workflows/image_qwen_image_2512_with_2steps_lora-6332ca621968/"
@@ -263,6 +263,57 @@
   </table>
   <a href="https://mapmyvisitors.com/web/1bx2g" title="Visit tracker"><img
       src="https://mapmyvisitors.com/map.png?d=CzB-jrbHFx_TJNGYMvsgGRb-cPeuWvHcV5PQKAWSK-I&cl=ffffff" /></a>
+  <script>
+    (function () {
+      const badge = document.getElementById('wuli-downloads-badge');
+      if (!badge) {
+        return;
+      }
+
+      const modelIds = [
+        'Wuli-art/Qwen-Image-2512-Turbo-LoRA-2-Steps',
+        'Wuli-art/Qwen-Image-2512-Turbo-LoRA'
+      ];
+
+      const formatBadgeNumber = function (value) {
+        return value.toLocaleString('en-US').replace(/,/g, '%2C');
+      };
+
+      const downloadsRequests = modelIds.map(function (modelId) {
+        const apiModelId = modelId.split('/').map(encodeURIComponent).join('/');
+        const apiUrl = 'https://huggingface.co/api/models/' +
+          apiModelId +
+          '?expand%5B%5D=downloadsAllTime';
+
+        return fetch(apiUrl)
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error('Failed to fetch Hugging Face model stats');
+            }
+            return response.json();
+          })
+          .then(function (data) {
+            return Number(data.downloadsAllTime) || 0;
+          });
+      });
+
+      Promise.all(downloadsRequests)
+        .then(function (downloads) {
+          const totalDownloads = downloads.reduce(function (sum, value) {
+            return sum + value;
+          }, 0);
+
+          badge.src = 'https://img.shields.io/badge/Total%20Downloads-' +
+            formatBadgeNumber(totalDownloads) +
+            '-ff9f43?logo=huggingface';
+          badge.alt = 'Hugging Face Total Downloads: ' +
+            totalDownloads.toLocaleString('en-US');
+        })
+        .catch(function (error) {
+          console.warn(error);
+        });
+    }());
+  </script>
 </body>
 
 </html>
