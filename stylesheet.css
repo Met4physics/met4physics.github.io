@@ -130,6 +130,18 @@ h2 {
   color: #7c4600;
 }
 
+.blog-badge {
+  border-color: #8ab7e8;
+  background: #eaf4ff;
+  color: #175a9c;
+}
+
+.blog-badge:focus,
+.blog-badge:hover {
+  background: #d7ebff;
+  color: #0e477f;
+}
+
 .name {
   padding-top: 20px;
   margin: 0;
